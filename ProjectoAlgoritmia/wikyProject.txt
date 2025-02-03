@@ -1,0 +1,17 @@
+Este programa insere-se no projecto final da disciplina de Algoritmos e Programação.
+
+Este ficheiro contém a informação sobre o seu funcionamento.
+
+O programa funciona com base no método de escolhas apresentadas no ecrã, sendo solicitado ao utilizador que insira uma opção.
+
+Ao iniciar, é apresentado um menu com várias opções que permitem navegar entre diferentes menus, simulando a gestão de uma linha férrea. Estes são de fácil compreensão e orientam o utilizador nos passos a realizar. Após o input fornecido pelo utilizador, o programa apresenta automaticamente o novo menu.
+
+Cada menu permite que o utilizador permaneça nele, realizando as várias opções disponíveis. A saída do menu ocorre apenas por escolha do utilizador, indicando a opção x, que permite ir subindo nos submenus até chegar ao menu inicial.
+
+Todos os dados estão armazenados em ficheiros CSV, garantindo a persistência da informação e permitindo o registo de novos dados.
+
+O programa utiliza várias funções para a realização das diversas tarefas. Esta estratégia foi adoptada porque permite compartimentar o código, proporcionando maior legibilidade e facilitando a detecção e isolamento de bugs. Além disso, torna o programa mais escalável, permitindo a adição de novas funcionalidades sem impactar o código existente.
+
+Apesar do empenho, não foi possível implementar todas as funcionalidades solicitadas, ficando de fora as operações de criação de viagens e linhas.
+
+Este trabalho foi realizado por Bruno Alexandre Dias de Bastos nº 95629 e Tomás Antunes nº 127208, com a colaboração de ambos os elementos em 50% das tarefas efectuadas.

@@ -1,0 +1,1010 @@
+ Crie um tuplo (5,6) na shell. Verifique o seu tipo.
+python
+Copy code
+# Solução:
+tuplo = (5, 6)
+print(type(tuplo))  # Resultado: <class 'tuple'>
+2. Iguale o tuplo anterior a um tuplo de variáveis (a, b).
+python
+Copy code
+# Solução:
+a, b = tuplo
+print(a, b)  # Resultado: 5 6
+3. Crie um tuplo c através de dois valores solicitados ao utilizador em execução. Execute este exercício utilizando apenas uma linha.
+python
+Copy code
+# Solução:
+c = tuple(map(int, input("Insira dois valores separados por espaço: ").split()))
+print(c)
+4. Imprima o valor da primeira posição do tuplo c.
+python
+Copy code
+# Solução:
+print(c[0])  # Acessa o primeiro elemento
+5. Concatene o tuplo (a, b) com o tuplo c. Itere sobre o tuplo resultante e imprima todos os seus valores.
+python
+Copy code
+# Solução:
+novo_tuplo = (a, b) + c
+for valor in novo_tuplo:
+    print(valor)
+6. Defina uma função myTuplo que receba dois valores e devolva um único tuplo contendo os valores recebidos.
+python
+Copy code
+# Solução:
+def myTuplo(val1, val2):
+    return (val1, val2)
+7. Defina uma função somaTuplo que receba um tuplo de inteiros e devolva a soma dos valores.
+python
+Copy code
+# Solução:
+def somaTuplo(tuplo):
+    return sum(tuplo)
+8. Defina uma função somaTuplos que receba dois tuplos de inteiros (cada um com dois inteiros apenas) e devolva a soma das posições.
+python
+Copy code
+# Solução:
+def somaTuplos(tuplo1, tuplo2):
+    return (tuplo1[0] + tuplo2[0], tuplo1[1] + tuplo2[1])
+9. Defina uma função simetriaTuplo que receba um tuplo e devolva o seu simétrico/inverso.
+python
+Copy code
+# Solução:
+def simetriaTuplo(tuplo):
+    return tuplo[::-1]
+
+
+Matrizes
+Agora vou resolver os exercícios relacionados a matrizes.
+
+1. Crie a matriz
+[
+0
+1
+5
+6
+]
+[ 
+0
+5
+​
+  
+1
+6
+​
+ ]
+em Python através da composição de listas.
+
+python
+Copy code
+# Solução:
+matriz = [
+    [0, 1],
+    [5, 6]
+]
+2. Imprima a posição (0,1) da matriz (considere 0 como a linha e 1 como a coluna).
+python
+Copy code
+# Solução:
+print(matriz[0][1])  # Resultado: 1
+3. Leia da shell variáveis correspondentes à linha e à coluna e imprima o valor da matriz correspondente a essa posição.
+python
+Copy code
+# Solução:
+linha = int(input("Digite a linha: "))
+coluna = int(input("Digite a coluna: "))
+print(matriz[linha][coluna])
+4. Crie uma função getMatrixPosition que receba a matriz, a linha e a coluna como argumentos, e retorne o valor da posição correspondente.
+python
+Copy code
+# Solução:
+def getMatrixPosition(matriz, linha, coluna):
+    return matriz[linha][coluna]
+5. Crie uma função initMatrix que receba como argumentos o número de linhas e colunas e retorne uma matriz correspondente com todas as posições inicializadas a 1.
+python
+Copy code
+# Solução:
+def initMatrix(linhas, colunas):
+    return [[1 for _ in range(colunas)] for _ in range(linhas)]
+6. Modifique a função initMatrix para que os valores da matriz sejam requisitados ao utilizador durante a execução.
+python
+Copy code
+# Solução:
+def initMatrix(linhas, colunas):
+    return [
+        [int(input(f"Digite o valor para posição ({i}, {j}): ")) for j in range(colunas)]
+        for i in range(linhas)
+    ]
+7. Crie uma função negativeMatrix que multiplique todas as posições de uma matriz por -1. Devolva a matriz resultante.
+python
+Copy code
+# Solução:
+def negativeMatrix(matriz):
+    return [[-valor for valor in linha] for linha in matriz]
+8. Crie uma função sumMatrixes que receba duas matrizes de igual tamanho (linhas e colunas) e devolva a soma das duas na forma de uma nova matriz.
+python
+Copy code
+# Solução:
+def sumMatrixes(matriz1, matriz2):
+    return [
+        [matriz1[i][j] + matriz2[i][j] for j in range(len(matriz1[0]))]
+        for i in range(len(matriz1))
+    ]
+Filas e Pilhas
+Agora resolvo os exercícios de filas e pilhas.
+
+1. Crie uma função printStack() que imprima o estado da pilha (myStack).
+python
+Copy code
+# Solução:
+myStackSize = 0
+myStack = []
+
+def printStack():
+    print(myStack)
+2. Crie uma função initStack(size) que inicializa a pilha e define o tamanho máximo.
+python
+Copy code
+# Solução:
+def initStack(size):
+    global myStackSize, myStack
+    myStackSize = size
+    myStack = []
+3. Crie uma função push(elem) que adiciona um elemento à pilha se o limite não for alcançado.
+python
+Copy code
+# Solução:
+def push(elem):
+    global myStackSize, myStack
+    if len(myStack) < myStackSize:
+        myStack.append(elem)
+        return True
+    return False
+4. Crie uma função pop() que retorna e remove o último elemento da pilha.
+python
+Copy code
+# Solução:
+def pop():
+    global myStack
+    if len(myStack) == 0:
+        return (False, False)
+    return (True, myStack.pop())
+Crie um novo módulo myQueue baseado no módulo myStack.
+Adapte as funções para implementar o comportamento de uma fila (remoção no início).
+
+python
+Copy code
+# Solução:
+myQueueSize = 0
+myQueue = []
+
+def printQueue():
+    print(myQueue)
+
+def initQueue(size):
+    global myQueueSize, myQueue
+    myQueueSize = size
+    myQueue = []
+
+def enqueue(elem):
+    global myQueueSize, myQueue
+    if len(myQueue) < myQueueSize:
+        myQueue.append(elem)
+        return True
+    return False
+
+def dequeue():
+    global myQueue
+    if len(myQueue) == 0:
+        return (False, False)
+    return (True, myQueue.pop(0))
+
+///////////////////////////////
+Crie um ficheiro de extensão .txt designado por data.
+python
+Copy code
+# Solução:
+with open('data.txt', 'w') as file:
+    pass  # O ficheiro é criado vazio
+2. Abra o ficheiro com um editor de texto à sua escolha e introduza uma linha com o valor “Uma frase em Python”.
+(Esse passo é manual, utilizando um editor de texto como o Notepad ou um editor integrado no IDE.)
+
+3. Crie um script readFile.py que imprima o conteúdo do ficheiro data.txt.
+python
+Copy code
+# readFile.py
+with open('data.txt', 'r') as file:
+    content = file.read()
+    print(content)
+4. Crie um script writeFile.py que leia uma frase da shell e escreva para um ficheiro newData.txt.
+python
+Copy code
+# writeFile.py
+phrase = input("Digite uma frase: ")
+with open('newData.txt', 'w') as file:
+    file.write(phrase)
+5. Crie a função annexSentence para adicionar uma string ao ficheiro newData.txt sem apagar seu conteúdo.
+python
+Copy code
+# Solução:
+def annexSentence(sentence):
+    with open('newData.txt', 'a') as file:
+        file.write(sentence + '\n')
+6. Crie o ficheiro numberData com os números 5, 10, 15, 20, 25 separados por vírgula.
+python
+Copy code
+# Solução:
+with open('numberData.txt', 'w') as file:
+    file.write('5,10,15,20,25')
+7. Leia o conteúdo de numberData.txt como uma lista de inteiros.
+python
+Copy code
+# Solução:
+with open('numberData.txt', 'r') as file:
+    numbers = list(map(int, file.read().split(',')))
+print(numbers)  # Resultado: [5, 10, 15, 20, 25]
+8. Reescreva o ficheiro com apenas os números maiores que 20.
+python
+Copy code
+# Solução:
+with open('numberData.txt', 'r') as file:
+    numbers = list(map(int, file.read().split(',')))
+
+with open('numberData.txt', 'w') as file:
+    file.write(','.join(map(str, [num for num in numbers if num > 20])))
+9. Crie uma função writeNumbers que leia total números da shell e os escreva no ficheiro separados por vírgula.
+python
+Copy code
+# Solução:
+def writeNumbers(total):
+    numbers = [input(f"Digite o número {i+1}: ") for i in range(total)]
+    with open('numbers.txt', 'w') as file:
+        file.write(','.join(numbers))
+10. Crie uma função readNumbers que retorne uma lista com os valores do ficheiro.
+python
+Copy code
+# Solução:
+def readNumbers():
+    with open('numbers.txt', 'r') as file:
+        return list(map(int, file.read().split(',')))
+11. Crie uma função biggestNumber que retorne o maior número do ficheiro.
+python
+Copy code
+# Solução:
+def biggestNumber():
+    numbers = readNumbers()
+    return max(numbers)
+12. Crie uma função totalSum que retorne a soma dos números no ficheiro.
+python
+Copy code
+# Solução:
+def totalSum():
+    numbers = readNumbers()
+    return sum(numbers)
+13. Crie um ficheiro newStringData com n frases. Leia e imprima cada frase sem \n.
+python
+Copy code
+# Solução:
+n = int(input("Quantas frases deseja adicionar? "))
+with open('newStringData.txt', 'w') as file:
+    for _ in range(n):
+        file.write(input("Digite uma frase: ") + '\n')
+
+with open('newStringData.txt', 'r') as file:
+    for line in file:
+        print(line.strip())
+14. Coloque todas as frases numa lista e imprima a lista.
+python
+Copy code
+# Solução:
+with open('newStringData.txt', 'r') as file:
+    lines = [line.strip() for line in file]
+print(lines)
+15. Crie uma função biggestWord que identifique a palavra de maior tamanho no ficheiro.
+python
+Copy code
+# Solução:
+def biggestWord():
+    with open('newStringData.txt', 'r') as file:
+        words = [word for line in file for word in line.split()]
+    return max(words, key=len)
+16. Inverta a lista de frases e exporte-a para o mesmo ficheiro.
+python
+Copy code
+# Solução:
+with open('newStringData.txt', 'r') as file:
+    lines = file.readlines()
+
+with open('newStringData.txt', 'w') as file:
+    file.writelines(lines[::-1])
+Se quiser, posso continuar resolvendo os exercícios da Pequena BD de Pessoas ou detalhar alguma das soluções! 😊
+
+
+
+
+
+
+You said:
+continua
+ChatGPT said:
+ChatGPT
+Pequena BD de Pessoas
+Agora resolvo os exercícios relacionados à Pequena BD de Pessoas, baseando-me nas especificações fornecidas.
+
+1. Crie um ficheiro myBD.txt com múltiplas entradas aleatórias no formato:
+Name, Occupation, Age (Exemplo: João, Estudante, 20).
+
+python
+Copy code
+# Solução:
+with open('myBD.txt', 'w') as file:
+    file.write("João, Estudante, 20\n")
+    file.write("Maria, Professora, 35\n")
+    file.write("Pedro, Engenheiro, 29\n")
+    file.write("Ana, Médica, 40\n")
+Crie o módulo myPersonDB.py com as seguintes funções:
+1. Função countTotalEntries: Determina o número de pessoas no ficheiro.
+python
+Copy code
+# Solução:
+def countTotalEntries():
+    with open('myBD.txt', 'r') as file:
+        return sum(1 for _ in file)
+2. Função returnPerson: Recebe o número de uma linha e retorna o conteúdo dessa linha como string.
+python
+Copy code
+# Solução:
+def returnPerson(line_number):
+    with open('myBD.txt', 'r') as file:
+        lines = file.readlines()
+    if 0 <= line_number < len(lines):
+        return lines[line_number].strip()
+    return None  # Retorna None se a linha não existir
+3. Função returnPersonAsTuple: Recebe o número de uma linha e retorna o conteúdo dessa linha como tuplo.
+python
+Copy code
+# Solução:
+def returnPersonAsTuple(line_number):
+    person = returnPerson(line_number)
+    if person:
+        return tuple(person.split(', '))
+    return None
+4. Função returnPersons: Retorna uma lista de todas as linhas como tuplos.
+python
+Copy code
+# Solução:
+def returnPersons():
+    with open('myBD.txt', 'r') as file:
+        return [tuple(line.strip().split(', ')) for line in file]
+5. Função oldestPerson: Retorna a pessoa com maior idade.
+python
+Copy code
+# Solução:
+def oldestPerson():
+    persons = returnPersons()
+    return max(persons, key=lambda x: int(x[2]))  # A idade está na posição 2
+6. Função existsPerson: Retorna um booleano indicando se uma pessoa existe no ficheiro.
+python
+Copy code
+# Solução:
+def existsPerson(name, occupation, age):
+    persons = returnPersons()
+    return (name, occupation, age) in persons
+7. Função addPerson: Adiciona uma pessoa ao ficheiro.
+python
+Copy code
+# Solução:
+def addPerson(name, occupation, age):
+    with open('myBD.txt', 'a') as file:
+        file.write(f"{name}, {occupation}, {age}\n")
+8. Função getPersonsWithOccupation: Retorna uma lista de pessoas com uma determinada ocupação.
+python
+Copy code
+# Solução:
+def getPersonsWithOccupation(occupation):
+    persons = returnPersons()
+    return [person for person in persons if person[1] == occupation]
+Resumo das Funções:
+Este conjunto de funções permite a manipulação de uma base de dados de pessoas em formato de texto. As operações incluem:
+
+Contar entradas,
+Consultar informações por linha ou ocupação,
+Adicionar novas pessoas,
+Encontrar a pessoa mais velha,
+Verificar se uma pessoa específica existe.
+Testando as Funções:
+Aqui está um exemplo de como usar as funções no script principal:
+
+python
+Copy code
+from myPersonDB import *
+
+# Contar o número de entradas
+print("Total de entradas:", countTotalEntries())
+
+# Retornar uma pessoa específica
+print("Pessoa na linha 2:", returnPerson(2))
+
+# Retornar como tuplo
+print("Pessoa na linha 2 (como tuplo):", returnPersonAsTuple(2))
+
+# Retornar todas as pessoas
+print("Todas as pessoas:", returnPersons())
+
+# Encontrar a pessoa mais velha
+print("Pessoa mais velha:", oldestPerson())
+
+# Verificar se uma pessoa existe
+print("Existe Maria, Professora, 35?:", existsPerson("Maria", "Professora", "35"))
+
+# Adicionar uma nova pessoa
+addPerson("Carlos", "Estudante", "22")
+
+# Encontrar pessoas com ocupação específica
+print("Pessoas com ocupação 'Estudante':", getPersonsWithOccupation("Estudante"))
+///////////////
+1. Crie um dicionário vazio e atribua-o a uma variável myMap.
+python
+Copy code
+# Solução:
+myMap = {}
+2. Adicione os valores especificados ao dicionário.
+python
+Copy code
+# Solução:
+myMap[25] = "Ola"
+myMap["4"] = 67
+myMap["list"] = [6, 7, 8]
+myMap[1] = {4: 5, 4: [1, 2]}
+3. Gere um dicionário com entradas Number : Number * Number para valores entre 1 e N.
+python
+Copy code
+# Solução:
+N = int(input("Digite um número: "))
+squares = {i: i * i for i in range(1, N + 1)}
+print(squares)
+4. Simule uma caixa registadora com o programa minhaRegistadora.py.
+python
+Copy code
+# minhaRegistadora.py
+def minhaRegistadora():
+    prices = {"laranja": 1, "maçã": 0.5, "pêra": 0.7}
+    coins = {0.01: 10, 0.02: 0, 0.05: 5, 0.1: 10, 0.5: 20, 1: 10, 2: 10, 5: 5, 10: 2, 20: 2}
+
+    while True:
+        option = input("Escolha uma opção (Compra / Terminar): ").strip().lower()
+        if option == "terminar":
+            break
+
+        if option == "compra":
+            total = 0
+            while True:
+                product = input("Digite o nome do produto (ou 'Fim' para terminar): ").strip().lower()
+                if product == "fim":
+                    break
+                if product in prices:
+                    total += prices[product]
+                else:
+                    print(f"Produto {product} não encontrado.")
+
+            print(f"Total da compra: {total:.2f}")
+            payment = float(input("Digite o montante entregue: "))
+            if payment >= total:
+                change = payment - total
+                print(f"Troco a ser devolvido: {change:.2f}")
+            else:
+                print("Montante insuficiente!")
+5. Função obtemChavesInteiras: Retorna entradas com chaves inteiras.
+python
+Copy code
+# Solução:
+def obtemChavesInteiras(d):
+    return {k: v for k, v in d.items() if isinstance(k, int)}
+6. Função somaInteirosNoDicionário: Soma todos os valores inteiros.
+python
+Copy code
+# Solução:
+def somaInteirosNoDicionário(d):
+    return sum(v for v in d.values() if isinstance(v, int))
+7. Função contaLetras: Conta as ocorrências de cada letra em uma string.
+python
+Copy code
+# Solução:
+def contaLetras(s):
+    from collections import Counter
+    s = ''.join(filter(str.isalpha, s)).lower()
+    counts = dict(Counter(s))
+    for letter in sorted(counts):
+        print(f"{letter}: {counts[letter]}")
+    return counts
+8. Função inverteDicionário: Inverte chaves e valores do dicionário.
+python
+Copy code
+# Solução:
+def inverteDicionário(d):
+    return {v: k for k, v in d.items()}
+9. Função limpaTiposDicionário: Organiza por tipo de dados.
+python
+Copy code
+# Solução:
+def limpaTiposDicionário(d):
+    from collections import defaultdict
+    result = defaultdict(list)
+    for k, v in d.items():
+        result[type(v)].append((k, v))
+    return dict(result)
+Contagem de Palavras
+1. Crie o programa conta_palavras.py para gerar myWords.txt.
+python
+Copy code
+# conta_palavras.py
+from collections import Counter
+
+def conta_palavras():
+    with open("around_the_world.txt", "r") as book:
+        words = book.read().lower().split()
+        word_counts = Counter(words)
+
+    with open("myWords.txt", "w") as output:
+        output.write("Palavra Contagem\n===================\n")
+        for word, count in sorted(word_counts.items()):
+            output.write(f"{word} {count}\n")
+2. Função carregarDicionárioPalavras: Lê o ficheiro e carrega um dicionário.
+python
+Copy code
+# Solução:
+def carregarDicionárioPalavras(filename):
+    with open(filename, "r") as file:
+        return {line.split()[0]: int(line.split()[1]) for line in file if not line.startswith('=')}
+3. Função contagemPalavra: Retorna a contagem de uma palavra específica.
+python
+Copy code
+# Solução:
+def contagemPalavra(word, word_dict):
+    return word_dict.get(word, 0)
+4. Detecte a maior palavra e seu tamanho.
+python
+Copy code
+# Solução:
+def maiorPalavra(word_dict):
+    return max(word_dict.keys(), key=len)
+/////////////////
+def myPotencia(base, expoente):
+    if expoente == 0:
+        return 1
+    return base * myPotencia(base, expoente - 1)
+2. Função Recursiva factorial
+python
+Copy code
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
+3. Função Recursiva multipleOf
+python
+Copy code
+def multipleOf(n, y):
+    if n == 1:
+        return y
+    return y + multipleOf(n - 1, y)
+4. Função Recursiva myLength
+python
+Copy code
+def myLength(iterable):
+    if not iterable:
+        return 0
+    return 1 + myLength(iterable[1:])
+5. Função Recursiva sumList
+python
+Copy code
+def sumList(lst):
+    if not lst:
+        return 0
+    return lst[0] + sumList(lst[1:])
+6. Função Recursiva multiplyList
+python
+Copy code
+def multiplyList(lst):
+    if not lst:
+        return 1
+    return lst[0] * multiplyList(lst[1:])
+7. Função Recursiva myTaylor
+python
+Copy code
+def myTaylor(x, y):
+    if y == 0:
+        return 1
+    return (x ** y) + myTaylor(x, y - 1)
+8. Função Recursiva myTaylor para Retornar a Expressão
+python
+Copy code
+def myTaylorExpression(x, y):
+    if y == 0:
+        return "1"
+    return myTaylorExpression(x, y - 1) + f" + {x}^{y}"
+9. Função Recursiva count
+python
+Copy code
+def count(lst, x):
+    if not lst:
+        return 0
+    return (1 if lst[0] == x else 0) + count(lst[1:], x)
+10. Função Recursiva countZeros
+python
+Copy code
+def countZeros(n):
+    if n == 0:
+        return 1
+    if n < 10:
+        return 0
+    return (1 if n % 10 == 0 else 0) + countZeros(n // 10)
+11. Função Recursiva unzip
+python
+Copy code
+def unzip(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list):
+            result.extend(unzip(item))
+        else:
+            result.append(item)
+    return result
+12. Função Recursiva depth
+python
+Copy code
+def depth(lst):
+    if not isinstance(lst, list):
+        return 0
+    return 1 + max((depth(item) for item in lst), default=0)
+13. Função Recursiva pascalTriangule
+python
+Copy code
+def pascalTriangule(n):
+    if n == 0:
+        return [1]
+    prev_row = pascalTriangule(n - 1)
+    return [1] + [prev_row[i] + prev_row[i + 1] for i in range(len(prev_row) - 1)] + [1]
+
+//////////////////
+def bubbleSort(lst):
+    n = len(lst)
+    for i in range(n):
+        for j in range(n - 1 - i):
+            if lst[j] > lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    return lst
+2. Função InsertionSort
+python
+Copy code
+def insertionSort(lst):
+    for i in range(1, len(lst)):
+        key = lst[i]
+        j = i - 1
+        while j >= 0 and key < lst[j]:
+            lst[j + 1] = lst[j]
+            j -= 1
+        lst[j + 1] = key
+    return lst
+3. Função ProcuraBinaria (Busca Binária)
+python
+Copy code
+def procuraBinaria(lst, target):
+    left, right = 0, len(lst) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if lst[mid] == target:
+            return mid
+        elif lst[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1  # Retorna -1 se não encontrar
+Exemplo de uso:
+
+python
+Copy code
+# Ordena com BubbleSort
+lista = [5, 3, 8, 1, 2]
+sorted_lista = bubbleSort(lista)
+print("Lista ordenada com BubbleSort:", sorted_lista)
+
+# Busca na lista ordenada
+indice = procuraBinaria(sorted_lista, 3)
+print("Índice do elemento 3:", indice)
+3.1 Sistema de Diretório
+Estrutura do Sistema de Diretórios
+python
+Copy code
+sistema = {
+    ('root', 'dir'): []
+}
+Funções para o Sistema de Diretórios
+Criar um diretório em um diretório existente
+python
+Copy code
+def criarDiretorio(nome, caminho):
+    for elem in sistema[caminho]:
+        if elem[0] == nome and elem[1] == 'dir':
+            print("Diretório já existe.")
+            return
+    sistema[caminho].append((nome, 'dir'))
+    sistema[(nome, 'dir')] = []
+Criar um ficheiro em um diretório existente
+python
+Copy code
+def criarFicheiro(nome, caminho):
+    for elem in sistema[caminho]:
+        if elem[0] == nome and elem[1] == 'file':
+            print("Ficheiro já existe.")
+            return
+    sistema[caminho].append((nome, 'file'))
+Listar os elementos de um diretório
+python
+Copy code
+def listarElementos(caminho):
+    if caminho not in sistema:
+        print("Caminho inválido.")
+        return
+    for elem in sistema[caminho]:
+        print(f"{elem[0]} ({elem[1]})")
+Verificar se um caminho é válido
+python
+Copy code
+def caminhoValido(caminho):
+    return caminho in sistema
+Procurar ficheiros ou diretórios por nome
+python
+Copy code
+def procurarPorNome(nome):
+    resultados = []
+    for caminho, conteudo in sistema.items():
+        for elem in conteudo:
+            if elem[0] == nome:
+                resultados.append((elem, caminho))
+    return resultados
+Menu Interativo
+python
+Copy code
+def menu():
+    current_path = ('root', 'dir')
+    while True:
+        comando = input(f"{current_path[0]}$ ").split()
+        if not comando:
+            continue
+
+        cmd = comando[0]
+        if cmd == "mkdir":
+            criarDiretorio(comando[1], current_path)
+        elif cmd == "addFile":
+            criarFicheiro(comando[1], current_path)
+        elif cmd == "pwd":
+            print("Caminho atual:", current_path[0])
+        elif cmd == "ls":
+            listarElementos(current_path)
+        elif cmd == "cd":
+            novo_path = comando[1]
+            if novo_path == "..":
+                current_path = ('root', 'dir') if current_path == ('root', 'dir') else current_path[:-1]
+            elif caminhoValido((novo_path, 'dir')):
+                current_path = (novo_path, 'dir')
+            else:
+                print("Diretório não encontrado.")
+        elif cmd == "rm":
+            nome = comando[1]
+            sistema[current_path] = [elem for elem in sistema[current_path] if elem[0] != nome]
+        elif cmd == "exit":
+            break
+        else:
+            print("Comando não reconhecido.")
+Exemplo de Uso
+python
+Copy code
+# Inicialize a estrutura e chame o menu:
+criarDiretorio('home', ('root', 'dir'))
+criarFicheiro('aula.txt', ('home', 'dir'))
+menu()
+
+/////////////////
+3.1 MySocialNetwork
+Usaremos um grafo representado como um dicionário para armazenar as conexões de amizade.
+
+Código:
+python
+Copy code
+# Estrutura inicial do grafo
+social_network = {
+    "Filipe": {"Luis", "Americo"},
+    "Luis": {"Filipe", "Sofia"},
+    "Americo": {"Filipe"},
+    "Pedro": {"Rita", "Sofia"},
+    "Rita": {"Pedro"},
+    "Sara": {"Sofia"},
+    "Sofia": {"Sara", "Luis", "Pedro"}
+}
+
+# 1. Determinar o número de amigos de um utilizador
+def friendNumber(user):
+    return len(social_network.get(user, set()))
+
+# 2. Verificar se um utilizador é amigo de outro
+def isFriendOf(user1, user2):
+    return user2 in social_network.get(user1, set())
+
+# 3. Adicionar um amigo à lista de amigos de um utilizador
+def addFriend(user1, user2):
+    social_network.setdefault(user1, set()).add(user2)
+    social_network.setdefault(user2, set()).add(user1)
+
+# 4. Remover um amigo da lista de amigos de um utilizador
+def removeFriend(user1, user2):
+    social_network.get(user1, set()).discard(user2)
+    social_network.get(user2, set()).discard(user1)
+
+# 5. Popule a estrutura com 10 utilizadores e 20 conexões
+def populateSocialNetwork():
+    new_users = ["Ana", "Carlos", "Mariana", "João"]
+    new_connections = [
+        ("Ana", "Carlos"), ("Ana", "Luis"), ("João", "Pedro"),
+        ("Carlos", "Mariana"), ("Mariana", "João"),
+        ("Ana", "Rita"), ("Mariana", "Rita"),
+        ("Sara", "Ana"), ("Carlos", "Pedro"), ("João", "Filipe")
+    ]
+    for user in new_users:
+        social_network.setdefault(user, set())
+    for user1, user2 in new_connections:
+        addFriend(user1, user2)
+
+# 6. Determinar se existe uma conexão entre A e B
+def existsConnection(user1, user2, visited=None):
+    if visited is None:
+        visited = set()
+    if user1 not in social_network or user2 not in social_network:
+        return False
+    if user2 in social_network[user1]:
+        return True
+    visited.add(user1)
+    for friend in social_network[user1]:
+        if friend not in visited:
+            if existsConnection(friend, user2, visited):
+                return True
+    return False
+Exemplo de Uso:
+python
+Copy code
+populateSocialNetwork()
+print("Amigos de Filipe:", friendNumber("Filipe"))
+print("Luis é amigo de Sofia?", isFriendOf("Luis", "Sofia"))
+addFriend("Filipe", "Carlos")
+removeFriend("Luis", "Filipe")
+print("Existe conexão entre Filipe e Rita?", existsConnection("Filipe", "Rita"))
+3.2 Vending Machine
+Usaremos um grafo para modelar os estados da máquina e um dicionário para gerenciar bebidas e moedas.
+
+Código:
+python
+Copy code
+# Estruturas da máquina
+bebidas = {"Coca-Cola": 1.5, "Água": 1.0, "Café": 0.8}
+moedas = {0.01: 10, 0.1: 10, 0.5: 5, 1: 10, 2: 5}
+estado = "Standby"
+saldo = 0
+
+# 1. Inserir moeda
+def inserirMoeda(valor):
+    global saldo, estado
+    if valor in moedas:
+        saldo += valor
+        moedas[valor] += 1
+        estado = "Moedas"
+        print(f"Saldo atual: {saldo:.2f}€")
+    else:
+        print("Moeda inválida.")
+
+# 2. Selecionar bebida
+def selecionarBebida(nome):
+    global saldo, estado
+    if nome not in bebidas:
+        print("Bebida indisponível.")
+        return
+    preco = bebidas[nome]
+    if saldo < preco:
+        estado = "Insuficiente"
+        print(f"Saldo insuficiente. Faltam {preco - saldo:.2f}€.")
+    else:
+        saldo -= preco
+        estado = "Emitido"
+        print(f"{nome} emitida. Troco: {saldo:.2f}€.")
+        saldo = 0  # Zerar saldo após entrega
+
+# 3. Cancelar operação
+def cancelar():
+    global saldo, estado
+    print(f"Operação cancelada. Troco devolvido: {saldo:.2f}€.")
+    saldo = 0
+    estado = "Standby"
+
+# 4. Menu da máquina
+def menu():
+    global estado
+    while True:
+        print(f"\nEstado atual: {estado}")
+        print("1. Inserir moeda")
+        print("2. Selecionar bebida")
+        print("3. Cancelar")
+        print("4. Sair")
+        opcao = input("Escolha uma opção: ")
+        if opcao == "1":
+            valor = float(input("Digite o valor da moeda: "))
+            inserirMoeda(valor)
+        elif opcao == "2":
+            bebida = input("Digite o nome da bebida: ")
+            selecionarBebida(bebida)
+        elif opcao == "3":
+            cancelar()
+        elif opcao == "4":
+            print("Encerrando máquina.")
+            break
+        else:
+            print("Opção inválida.")
+Exemplo de Uso:
+python
+Copy code
+menu()
+<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+capitalize()	Converts the first character of the string to a capital (uppercase) letter
+casefold()	Implements caseless string matching
+center()	Pad the string with the specified character.
+count()	Returns the number of occurrences of a substring in the string.
+encode()	Encodes strings with the specified encoded scheme
+endswith()	Returns “True” if a string ends with the given suffix
+expandtabs()	Specifies the amount of space to be substituted with the “\t” symbol in the string
+find()	Returns the lowest index of the substring if it is found
+format()	Formats the string for printing it to console
+format_map()	Formats specified values in a string using a dictionary
+index()	Returns the position of the first occurrence of a substring in a string
+isalnum()	Checks whether all the characters in a given string is alphanumeric or not
+isalpha()	Returns “True” if all characters in the string are alphabets
+isdecimal()	Returns true if all characters in a string are decimal
+isdigit()	Returns “True” if all characters in the string are digits
+isidentifier()	Check whether a string is a valid identifier or not
+islower()	Checks if all characters in the string are lowercase
+isnumeric()	Returns “True” if all characters in the string are numeric characters
+isprintable()	Returns “True” if all characters in the string are printable or the string is empty
+isspace()	Returns “True” if all characters in the string are whitespace characters
+istitle()	Returns “True” if the string is a title cased string
+isupper()	Checks if all characters in the string are uppercase
+join()	Returns a concatenated String
+ljust()	Left aligns the string according to the width specified
+lower()	Converts all uppercase characters in a string into lowercase
+lstrip()	Returns the string with leading characters removed
+maketrans()	 Returns a translation table
+partition()	Splits the string at the first occurrence of the separator 
+replace()	Replaces all occurrences of a substring with another substring
+rfind()	Returns the highest index of the substring
+rindex()	Returns the highest index of the substring inside the string
+rjust()	Right aligns the string according to the width specified
+rpartition()	Split the given string into three parts
+rsplit()	Split the string from the right by the specified separator
+rstrip()	Removes trailing characters
+splitlines()	Split the lines at line boundaries
+startswith()	Returns “True” if a string starts with the given prefix
+strip()	Returns the string with both leading and trailing characters
+swapcase()	Converts all uppercase characters to lowercase and vice versa
+title()	Convert string to title case
+translate()	Modify string according to given translation mappings
+upper()	Converts all lowercase characters in a string into uppercase
+zfill()	Returns a copy of the string with ‘0’ characters padded to the left side of the string
+<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+append()	Adds an element at the end of the list
+clear()	Removes all the elements from the list
+copy()	Returns a copy of the list
+count()	Returns the number of elements with the specified value
+extend()	Add the elements of a list (or any iterable), to the end of the current list
+index()	Returns the index of the first element with the specified value
+insert()	Adds an element at the specified position
+pop()	Removes the element at the specified position
+remove()	Removes the item with the specified value
+reverse()	Reverses the order of the list
+sort()	Sorts the list
